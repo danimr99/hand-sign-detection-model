@@ -6,10 +6,12 @@ from sklearn.model_selection import train_test_split
 
 import tensorflow as tf
 import tensorflow_decision_forests as tfdf
+import tensorflowjs as tfjs
 
 # Definition of constants
 DATASET_FILE_PATH = '../../dataset/dataset.pickle'
-MODEL_FILE_PATH = '../../models/tensorflow/model'
+TF_MODEL_FILE_PATH = '../../models/tensorflow/tf_model'
+TFJS_MODEL_FILE_PATH = '../../models/tensorflow/tfjs_model'
 
 # Load data
 data_dict = pickle.load(open(DATASET_FILE_PATH, 'rb'))
@@ -49,19 +51,20 @@ evaluation = model.evaluate(test_ds, return_dict=True)
 for name, value in evaluation.items():
     print(f"{name}: {value:.4f}")
 
-# Check if exists model file path directory
-if not os.path.exists(os.path.dirname(MODEL_FILE_PATH)):
-    os.makedirs(os.path.dirname(MODEL_FILE_PATH))
+# Check if exists TensorFlow model file path directory
+if not os.path.exists(os.path.dirname(TF_MODEL_FILE_PATH)):
+    os.makedirs(os.path.dirname(TF_MODEL_FILE_PATH))
 
 # Save Tensorflow model
-model.save(MODEL_FILE_PATH)
+model.save(TF_MODEL_FILE_PATH)
 
-# Convert TensorFlow model to TFLite
-# converter = tf.lite.TFLiteConverter.from_saved_model(
-#     './models/tensorflow_model')
-# converter.target_spec.supported_ops = [
-#     tf.lite.OpsSet.TFLITE_BUILTINS,  # enable TensorFlow Lite ops.
-#     tf.lite.OpsSet.SELECT_TF_OPS  # enable TensorFlow ops.
-# ]
-# tflite_model = converter.convert()
-# open("./models/model.tflite", "wb").write(tflite_model)
+# Load the model with Keras
+model = tf.keras.models.load_model(TF_MODEL_FILE_PATH)
+
+# Check if exists TensorFlowJS model file path directory
+if not os.path.exists(os.path.dirname(TFJS_MODEL_FILE_PATH)):
+    os.makedirs(os.path.dirname(TFJS_MODEL_FILE_PATH))
+
+# Convert the keras model to TensorFlow.js
+tfjs.converters.tf_saved_model_conversion_v2.convert_keras_model_to_graph_model(
+    model, TFJS_MODEL_FILE_PATH)

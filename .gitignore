@@ -1,0 +1,7 @@
+# Folders
+images/
+dataset/
+models/
+
+# Files
+.DS_Store

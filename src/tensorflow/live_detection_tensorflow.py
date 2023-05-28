@@ -8,7 +8,7 @@ import tensorflow_decision_forests as tfdf
 
 # Definition of constants
 DATASET_FILE_PATH = '../../dataset/dataset.pickle'
-MODEL_FILE_PATH = '../../models/tensorflow/model'
+MODEL_FILE_PATH = '../../models/tensorflow/tf_model'
 MIN_PREDICTION_CONFIDENCE = 0.7
 CONSECUTIVE_PREDICTIONS_FRAMES = 10
 
