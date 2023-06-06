@@ -1,3 +1,4 @@
+import json
 import os
 import pickle
 import numpy as np
@@ -12,6 +13,7 @@ import tensorflowjs as tfjs
 DATASET_FILE_PATH = '../../dataset/dataset.pickle'
 TF_MODEL_FILE_PATH = '../../models/tensorflow/tf_model'
 TFJS_MODEL_FILE_PATH = '../../models/tensorflow/tfjs_model'
+LABELS_FILE_PATH = '../../models/tensorflow/labels.json'
 
 # Load data
 data_dict = pickle.load(open(DATASET_FILE_PATH, 'rb'))
@@ -68,3 +70,7 @@ if not os.path.exists(os.path.dirname(TFJS_MODEL_FILE_PATH)):
 # Convert the keras model to TensorFlow.js
 tfjs.converters.tf_saved_model_conversion_v2.convert_keras_model_to_graph_model(
     model, TFJS_MODEL_FILE_PATH)
+
+# Write labels with its corresponding identifier into a JSON file
+with open(LABELS_FILE_PATH, 'w') as f:
+    json.dump(label_to_id, f)

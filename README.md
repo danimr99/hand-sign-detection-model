@@ -71,6 +71,7 @@ This repository contains the implementation of a machine learning model for hand
 	- DATASET_FILE_PATH: File name or path to get the dataset data from.
 	- TF_MODEL_FILE_PATH: File name or path to save the TensorFlow model in SavedModel format (without extension).
 	- TFJS_MODEL_FILE_PATH: File name or path to save the TensorFlowJS model (without extension).
+	- LABELS_FILE_PATH: File name or path to save the model labels in a JSON format.
 
 
 
