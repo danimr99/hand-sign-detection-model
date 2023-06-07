@@ -59,6 +59,7 @@ This repository contains the implementation of a machine learning model for hand
 	- MODEL_FILE_PATH: File name or path to get the model from.
 	- MIN_PREDICTION_CONFIDENCE: From 0 to 1, the minimum prediction confidence to consider a prediction as valid.
 	- CONSECUTIVE_PREDICTIONS_FRAMES: Number of consecutive frames with the same prediction to consider a detection as valid.
+	- LABELS_FILE_PATH: File name or path to save the model labels in a JSON format.
 
 
 

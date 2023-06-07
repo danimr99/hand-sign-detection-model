@@ -1,6 +1,7 @@
 import os
 import pickle
 import numpy as np
+import json
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -15,6 +16,7 @@ from onnxmltools.utils import save_model
 # Definition of constants
 DATASET_FILE_PATH = '../../dataset/dataset.pickle'
 MODEL_FILE_PATH = '../../models/scikit/model'
+LABELS_FILE_PATH = '../../models/scikit/labels.json'
 
 # Load data
 data_dict = pickle.load(open(DATASET_FILE_PATH, 'rb'))
@@ -48,6 +50,14 @@ if not os.path.exists(os.path.dirname(MODEL_FILE_PATH)):
 f = open('{}.pickle'.format(MODEL_FILE_PATH), 'wb')
 pickle.dump({'model': model}, f)
 f.close()
+
+# Convert each label into an integer identifier depending on the label (same label = same identifier)
+unique_labels = np.unique(labels)
+label_to_id = {label: i for i, label in enumerate(unique_labels)}
+
+# Write labels with its corresponding identifier into a JSON file
+with open(LABELS_FILE_PATH, 'w') as f:
+    json.dump(label_to_id, f)
 
 # Save model as onnx file
 target_opset = get_latest_tested_opset_version()
