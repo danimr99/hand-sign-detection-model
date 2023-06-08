@@ -25,8 +25,9 @@ data = []
 labels = []
 
 for class_label in os.listdir(IMAGES_DIR_PATH):
-    # Ignore .DS_Store
+    # Ignore excluded files
     if class_label not in EXCLUDED_FILES:
+        # Iterate over each image
         for image_name in os.listdir(os.path.join(IMAGES_DIR_PATH, class_label)):
             aux = []
             x_ = []
