@@ -63,6 +63,15 @@ This repository contains the implementation of a machine learning model for hand
 
 
 
+	###  Model Evaluation SciKit
+	Evaluates a Random Forest Classifier model with the dataset collected previously using a stratified k-fold cross-validation approach.
+
+	##### Modifiable Constants 
+	- DATASET_FILE_PATH: File name or path to get the dataset file.
+	- STRATIFIED_KFOLD_SPLITS: Number of folds.
+
+
+
 	## Using TensorFlow Decision Forests
 
 	### Train Classifier Tensorflow

@@ -33,14 +33,10 @@ x_train, x_test, y_train, y_test = train_test_split(
 model = RandomForestClassifier()
 
 # Train the model
-model.fit(x_train, y_train)
+model.fit(data, labels)
 
 # Make predictions
 y_predict = model.predict(x_test)
-
-# Evaluate accuracy
-score = accuracy_score(y_predict, y_test)
-print('Accuracy: {}'.format(score * 100))
 
 # Check if exists model file path directory
 if not os.path.exists(os.path.dirname(MODEL_FILE_PATH)):
