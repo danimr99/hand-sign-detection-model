@@ -10,6 +10,12 @@ This repository contains the implementation of a machine learning model for hand
 
 	**NOTE**: You can clone the environment from [environment.yml](https://github.com/danimr99/hand-sign-detection-model/blob/main/environment.yml) using Conda.
 	
+	```console
+		$ conda env create -f environment.yml
+	```
+
+ 	It will create a Conda environment with the name specified in the environment.yml file.
+	
 2. Use the scripts in the following order to collect images to create your dataset:
 	## Image Collector
 	Collects images using the webcam for a class label. If already exists a folder for the class label specified on the destination images directory, it will add more images to it.
