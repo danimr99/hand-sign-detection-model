@@ -65,3 +65,6 @@ onnx_model = convert_sklearn(
     target_opset={"": target_opset, "ai.onnx.ml": 1}
 )
 save_model(onnx_model, '{}.onnx'.format(MODEL_FILE_PATH))
+
+# Print success message
+print('Model trained successfully!')

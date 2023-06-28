@@ -76,3 +76,6 @@ if not os.path.exists(os.path.dirname(OUTPUT_FILE_PATH)):
 f = open(OUTPUT_FILE_PATH, 'wb')
 pickle.dump({'data': data, 'labels': labels}, f)
 f.close()
+
+# Print success message
+print('Dataset generated successfully!')

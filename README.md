@@ -26,7 +26,7 @@ This repository contains the implementation of a machine learning model for hand
 	#### Modifiable Constants
 	- IMAGES_DIR_PATH: Directory or path to save the collected images.
 	- CLASS_LABEL: String for the class label to collect.
-	- DATASET_SIZE: Number of images to collect.
+	- DATASET_SIZE: Number of images to collect. It is important to collect the same number of images for each sign. In case a sign could be done with a hand depending on the handedness, it is necessary to do half with each hand.
 
 
 
