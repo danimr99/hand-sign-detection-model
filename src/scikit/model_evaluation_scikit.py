@@ -76,11 +76,15 @@ print(report)
 print('\n')
 
 # Plot the confusion matrix
-color = 'white'
+color = 'black'
 matrix = plot_confusion_matrix(model, data, y_pred, cmap=plt.cm.Blues)
 matrix.ax_.set_title('Confusion Matrix', color=color)
 plt.xlabel('Predicted Label', color=color)
-plt.ylabel('True Label', color=color)
+plt.ylabel('Real Label', color=color)
 plt.gcf().axes[0].tick_params(colors=color)
 plt.gcf().axes[1].tick_params(colors=color)
+plt.gcf().axes[0].tick_params(axis='x', rotation=90)
+
+# Add spacing with bottom tools bar
+plt.tight_layout()
 plt.show()
